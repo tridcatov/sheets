@@ -20,19 +20,20 @@ global = {
                 \global
                 \soloistnotes
             >>
+            \lyricsto "soloist" \new Lyrics \solowords
         >>
 
         \new ChoirStaff <<
-            \new Staff <<
+            \new Staff = "women" <<
                 \new Voice = "soprano" <<
+                    \voiceOne
                     \global
                     \sopranonotes
                 >>
                 \lyricsto "soprano" \new Lyrics \sopranowords
-            >>
 
-            \new Staff <<
                 \new Voice = "alto" <<
+                    \voiceTwo
                     \global
                     \altonotes
                 >>
