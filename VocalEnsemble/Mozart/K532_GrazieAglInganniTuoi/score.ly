@@ -7,6 +7,8 @@
    tagline = ""
 }
 
+#(set-global-staff-size 16)
+
 global = {
    \key bes \major
    \time 2/4
@@ -226,10 +228,7 @@ plhNotes = {
 
 \score {
 <<
-   \new ChoirStaff \with {
-      fontSize = #-1
-      \override StaffSymbol.staff-space = #(magstep -1)
-   } << 
+   \new ChoirStaff << 
       \new Staff << 
          \set Staff.instrumentName = #"Soprano"
          \new Voice = "soprano" << 
@@ -258,10 +257,7 @@ plhNotes = {
       >>
    >>
    
-   \new PianoStaff \with {
-      fontSize = #-3
-      \override StaffSymbol.staff-space = #(magstep -3)
-   } << 
+   \new PianoStaff << 
       
       \new Staff = "prh" <<
          \global
