@@ -1,7 +1,0 @@
-
-tenornotes = {
-    
-}
-tenorwords = \lyricmode {  }
-
-
