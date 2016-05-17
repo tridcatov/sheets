@@ -7,11 +7,6 @@
    tagline = ""
 }
 
-\paper {
-   beetween-system-padding = #0.1
-   beetween-system-space = #0.1
-}
-
 global = {
    \key bes \major
    \time 2/4
@@ -231,7 +226,10 @@ plhNotes = {
 
 \score {
 <<
-   \new ChoirStaff << 
+   \new ChoirStaff \with {
+      fontSize = #-1
+      \override StaffSymbol.staff-space = #(magstep -1)
+   } << 
       \new Staff << 
          \set Staff.instrumentName = #"Soprano"
          \new Voice = "soprano" << 
@@ -259,7 +257,12 @@ plhNotes = {
          \lyricsto "basso" \new Lyrics \bassoWords
       >>
    >>
-   \new PianoStaff << 
+   
+   \new PianoStaff \with {
+      fontSize = #-3
+      \override StaffSymbol.staff-space = #(magstep -3)
+   } << 
+      
       \new Staff = "prh" <<
          \global
          \autoBeamOn
