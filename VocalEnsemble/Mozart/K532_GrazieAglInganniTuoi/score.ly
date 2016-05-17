@@ -7,6 +7,11 @@
    tagline = ""
 }
 
+\paper {
+   beetween-system-padding = #0.1
+   beetween-system-space = #0.1
+}
+
 global = {
    \key bes \major
    \time 2/4
@@ -112,7 +117,120 @@ bassoWords =  {
    \verse
 }
 
+
+prhVerse = \relative c'' {
+   \new Voice <<
+      \relative c' { d'8. d16 c( bes c d) | c( bes)}
+      \relative { f'8. f16 es( d es f) | es( d }
+   >>
+   <<
+      \new Voice <<
+         \relative c'' {
+            \voiceOne
+            bes8~ bes16( bes c d) | es8 es d16( c d es) | d( c) c4 d16( es) |
+            f8 f es16( d es f) | d8([ es f g)] | \appoggiatura g16 f8( es16 d) c( bes c d) | bes4~ bes16 bes( c d) |
+            es8 es d16( c d es) | d( c) c4( d16 es) | f8 f es16( d es f) | d8([ es f g)] | f8( es16 d) c( bes c d) | 
+            bes8 r c4( | bes8) r a4( | bes8)
+         }
+      >>
+      \new Voice << 
+         \relative c' {
+            \voiceTwo
+            d16( es) f4 | a16( g a f) bes4 | f4. f8 | bes16( d c bes) a4 | r16 bes8 bes bes bes16~ | bes4 f8( es) |
+            d8.( es16) f4 | a16( g a f) bes4 | f8.( e16) f4 | bes16( d c bes) a4 | r16 bes8 bes bes bes16~ | bes4 f |
+            bes8 r es,16( g f es) | d8 r c16( es d c) | <bes d>8
+         }
+      >>
+   >>
+}
+
+prhMid = \relative c' {
+   { r16 f( g a bes c) | }
+   <<
+      \new Voice << 
+         \relative c'' {
+            \voiceOne
+            des8. des16 c( es) d( c) | c( bes) bes4( des16 es) | f8. f16 es( des) es( f) | es( des) des4 des16( f~ |
+            f es) r es(~ es des) r des~ des8 c4 c8 | des8 f,16( bes) des( f) es( des) | des( c) c4 c8 | des f,16( bes des f) es( d)
+            c4\fermata( cis) 
+         }
+      >> 
+      \new Voice << 
+         \relative c'' {
+            \voiceTwo
+            r8 bes4->( a8) | s2 | r8 bes4-> a8~ | a16( bes) bes4 f8~ | f f4 e8~ | e16 e( f g a g f es) | 
+            des( es) f8~ f f~ | f8.( g16 a g f es) | des( es) f8 ~ f f~ | f4 r
+         }
+      >> 
+   >>
+}
+
+prhNotes = {
+   \prhVerse
+   \prhMid
+   \prhVerse
+}
+
+plhVerse = \relative c {
+   <<
+      \new Voice <<
+         \relative c {
+            \voiceOne
+            bes16( f' bes8) a a | bes,16( f' bes c) d8( <c es>16 <bes d>) | c8 c bes16( a bes c) | bes( a) a4 bes16( c) |
+            d8 d c16( bes c d) | \appoggiatura bes,16 bes'8( c d es) | \appoggiatura es16 d8( c16 bes) a( g a f) |
+            bes,16( f' bes c d8 bes) | c c bes16( a bes c) | bes a a4 bes16 c | d8 d c16( bes c d) | 
+            \appoggiatura bes,16 bes'8( c d es) | d( c16 bes) a( g f es) | bes'8 r a4( | bes8) r f4~ | f8
+         }
+      >>
+      \new Voice << 
+         \relative c {
+            \voiceTwo
+            bes4 f'8 f | bes,4. bes8 | f'4 f | f8. e16 f( es d c) | bes2 |
+            bes'4. es,8 | f4 f | bes,4. r8 | f'4 f | f~ f16 es( d c) | 
+            bes8 bes' bes,4 | bes'4. es,8 | f4. f8 | <d bes>8 r f4( | bes,8) r f4( | bes8)
+         }
+      >>
+   >>
+}
+
+plhMid = \relative c {
+   { r8 r16 f( g a) | bes8 r r4 |
+      \new Voice <<
+         \clef "treble"
+         \relative c' { f8.->( es16) es( des) des8 }
+         \relative c' { des8. c16) c( bes) bes8 }
+      >>
+   }
+   <<
+      \clef "bass"
+      \new Voice << 
+         \relative c' {
+            \voiceOne
+            des8. des16 c( bes) c( des) | c( bes) bes4 bes16( des~) | des16( c) a c~( c bes) r bes~ |
+            bes8 a( c) a | bes16( c des8) bes16( des) c( bes) | bes( a) a8( c) a |
+            bes16( c) des8 bes16( des) c( bes) | a4\fermata 
+         }
+      >> 
+      \new Voice << 
+         \relative c {
+            \voiceTwo
+            r4 r8 f | r bes,16( c des f) bes8 | a f bes bes, | f'4. f8 | f2 | f4. f8 |
+            f4 f | f 
+            }
+      >> 
+   >>
+   r4
+}
+
+plhNotes = {
+   \plhVerse
+   \plhMid
+   \plhVerse
+}
+
+
 \score {
+<<
    \new ChoirStaff << 
       \new Staff << 
          \set Staff.instrumentName = #"Soprano"
@@ -141,4 +259,19 @@ bassoWords =  {
          \lyricsto "basso" \new Lyrics \bassoWords
       >>
    >>
+   \new PianoStaff << 
+      \new Staff = "prh" <<
+         \global
+         \autoBeamOn
+         \prhNotes
+         
+      >>
+      \new Staff = "plh" <<
+         \clef "bass"
+         \global
+         \autoBeamOn
+         \plhNotes
+      >>
+   >>
+>>
 }
