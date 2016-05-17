@@ -18,7 +18,7 @@ verse = \lyricmode {
    fin re -- spi -- ro,_o | Ni -- ce, al |
    fin d'un in -- fe -- | li -- ce | eb -- ber gli Dei pie -- | tà. |
    Gra -- zie_a -- gl'in -- gan -- ni | tuo -- i, al |
-   fin d'un in -- fe -- | li -- ce| eb -- ber gli Dei pie -- | tà. Gra -- | zie, gra -- | zie! |
+   fin d'un in -- fe -- | li -- ce | eb -- ber gli Dei pie -- | tà. Gra -- | zie, gra -- | zie!
 }
 
 sopranoVerse = \relative c'' {
